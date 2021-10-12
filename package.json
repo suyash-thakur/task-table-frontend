@@ -1,0 +1,20 @@
+{
+  "name": "task-board-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.7.6",
+    "axios": "^0.22.0",
+    "core-js": "^3.15.1",
+    "nuxt": "^2.15.7",
+    "vue-smooth-dnd": "^0.8.1",
+    "vuedraggable": "^2.24.3"
+  },
+  "devDependencies": {}
+}
