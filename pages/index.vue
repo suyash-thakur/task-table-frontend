@@ -134,7 +134,7 @@
                 formLayout: "horizontal",
                 form: this.$form.createForm(this, { name: "coordinated" }),
                 formTask: this.$form.createForm(this, { name: "coordinatedTask" }),
-
+  cards:[],
                 selected_id: "",
                 selected_task_id: "",
                 styleObject: {
@@ -144,11 +144,13 @@
             };
         },
         async asyncData() {
-            const cards = await axios.get("http://localhost:4000/status").then((response) => {
+            const cards = await axios.get("https://task-table-backend.herokuapp.com/status").then((response) => {
+              console.log(response.data);
                 return response.data;
             });
             return { cards };
         },
+
         methods: {
             onDrop(item, dropResult) {
                 let dropItem, dropTask, dragTask;
@@ -165,7 +167,7 @@
                     axios
                         .request({
                             method: "PUT",
-                            url: `http://localhost:4000/dragTask`,
+                            url: `https://task-table-backend.herokuapp.com/dragTask`,
                             headers: {},
                             data: {
                                 host_status_id: dropResult.payload.hostid,
@@ -183,7 +185,7 @@
                         axios
                             .request({
                                 method: "POST",
-                                url: `http://localhost:4000/task`,
+                                url: `https://task-table-backend.herokuapp.com/task`,
                                 headers: {},
                                 data: {
                                     status_id: this.selected_id,
@@ -208,7 +210,7 @@
                         axios
                             .request({
                                 method: "PUT",
-                                url: `http://localhost:4000/updateTask/${this.selected_task_id}`,
+                                url: `https://task-table-backend.herokuapp.com/updateTask/${this.selected_task_id}`,
                                 headers: {},
                                 data: {
                                     content: values.TaskData,
@@ -259,7 +261,7 @@
                 axios
                     .request({
                         method: "PUT",
-                        url: `http://localhost:4000/removeTask`,
+                        url: `https://task-table-backend.herokuapp.com/removeTask`,
                         headers: {},
                         data: {
                             status_id: status_id,
